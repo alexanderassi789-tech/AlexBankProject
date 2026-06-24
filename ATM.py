@@ -1,75 +1,55 @@
+# BUILDING AN ATM MACHINE
+
 balance = 20000
-choice =(int(input("""
+# here we are giving it the balance which it can use to perform
 
-What would you like to do today? 
+# HERE WE CREATED THE USER CHOICE TO SCAN THROUGH OPTIONS 
+choice = (int(input("""
+Welcome to Alex bank PLC, How can we help you today?              
 1. Check balance
-2. deposit 
-3. withdraw
-4. Buy Airtime
-5. Exit
-""")))
+2. Deposit
+3. Withdraw 
+4. Purchase Airtime
+5. Exit                     """)))
 
-
-Name = (input("What is your name? "))
-Password = (int(input("What is your password? ")))
-
-def Login(Name, Password):
-
-   if Password == 1234:
-      print(account)
-
-      return(f"""
-    LOGIN SUCCESSFUL
-{Name}, Welcome to Alex bank PLC.
-How can we help you today? """)
-
-   else:
-      return(f"Sorry {Name}, You have inputed Invalid creedentials" )
-account = Login(Name, Password)
-print(account)
-
-def atm(account, choice, balance):
- 
- if choice == 1:
-    return(f"Your balance is {balance}")
- elif choice == 2:
-        amount = (int(input("enter deposit amount... ")))
-        balance += amount
-        return(f"Your updated balance is N{balance}")
-    
- elif choice == 3:
-        withdraw = (int(input("how much would you like to withdraw? ")))
-        balance -= withdraw
+# HERE WE ARE CREATING THE FUNCTIONS
+def alex_bank(balance , choice):
+    if choice == 1:
+        return (f"Your balance is: N{balance}")
+    elif choice == 2:
+        deposit = (int(input("How much would you like to deposit? ")))
+        print(deposit)
+        return(f"Your new balance is: N{balance + deposit}")
+    elif choice == 3:
+        withdraw = (int(input("How much would you like to withdraw? ")))
+        print(withdraw)
         if withdraw > balance:
-             return(f"Insufficient balance!")
-        
- if withdraw <= balance:
-       return(f"withdraw succecful, your current balance is N{balance}")
+            return("Insufficient balance! ")
+        if withdraw <= balance:
+            return (f"Withdraw successful, Your new balance is: N{balance - withdraw}")
+    elif choice == 4:
+        airtime = (int(input("""How much airtime would you like to purchase?
+        1. 1GB for N1,000
+        2. 2GB for 2,0000
+        3. 5GB for 3,000
+                       """)))
+        print(airtime)
+        if airtime == 1:
+            return(f"Airtime purchase  successful!, your current balance is: {balance - airtime} ")
+        if airtime == 2: 
+            return(f"Airtime purchase was successful!, your current balance is: {balance - airtime} ")
+        if airtime == 3:
+            return(f"Airtime purchase was successful!, your current balance is: {balance - airtime} ")
+        else:
+            return("Invalid option")
+    elif choice == 5:
+        return("Thank you for banking with us")
 
- elif choice == 4:
-          airtime = (int(input(
-              """How much airtime would you like to purchase?  
-           1. 4GB for N400
-           2. 2GB for N500
-           3. 1GB for N100
-        
-          """)))
+ATM = alex_bank(balance, choice)
+print(ATM) 
+                 
+    
 
-          balance -= airtime
-          return(f"Airtime purchase successful, your current balance is N{balance} ") 
-
- elif choice == 5:
-    return("Thank you for banking with us, see you next time! ")
-
- else:
-     return("Invalid input")
-
-
-Multi_choice = atm(account, choice, balance)
-print(Multi_choice)
-
-
-print("Would you like to perform another transaction? ")
 
 
 
