@@ -10,7 +10,8 @@ Welcome to Alex bank PLC, How can we help you today?
 2. Deposit
 3. Withdraw 
 4. Purchase Airtime
-5. Exit                     """)))
+5. Transfer money
+6. Exit                     """)))
 
 # HERE WE ARE CREATING THE FUNCTIONS
 def alex_bank(balance , choice):
@@ -18,32 +19,54 @@ def alex_bank(balance , choice):
         return (f"Your balance is: N{balance}")
     elif choice == 2:
         deposit = (int(input("How much would you like to deposit? ")))
-        print(deposit)
-        return(f"Your new balance is: N{balance + deposit}")
+        balance += deposit
+        return(f"Your new balance is: N{balance}")
     elif choice == 3:
         withdraw = (int(input("How much would you like to withdraw? ")))
-        print(withdraw)
+        
         if withdraw > balance:
-            return("Insufficient balance! ")
-        if withdraw <= balance:
-            return (f"Withdraw successful, Your new balance is: N{balance - withdraw}")
+            return("Insufficient balance! ")   
+        
+        withdraw <= balance
+        balance -= withdraw
+        return (f"Withdraw successful, Your new balance is: N{balance}")
     elif choice == 4:
         airtime = (int(input("""How much airtime would you like to purchase?
-        1. 1GB for N1,000
+        1. 1GB for 1,000
         2. 2GB for 2,0000
         3. 5GB for 3,000
                        """)))
-        print(airtime)
         if airtime == 1:
-            return(f"Airtime purchase  successful!, your current balance is: {balance - airtime} ")
-        if airtime == 2: 
-            return(f"Airtime purchase was successful!, your current balance is: {balance - airtime} ")
-        if airtime == 3:
-            return(f"Airtime purchase was successful!, your current balance is: {balance - airtime} ")
+            return(f"Airtime purchase  successful!, your current balance is: N{balance - 1000 } ")
+        elif airtime == 2: 
+            return(f"Airtime purchase was successful!, your current balance is: N{balance - 2000} ")
+        elif airtime == 3:
+            return(f"Airtime purchase was successful!, your current balance is: N{balance - 3000} ")
         else:
             return("Invalid option")
     elif choice == 5:
+        Name = (input("Enter the name of recipiet: "))
+        Bank = (input("What bank would you like to transfer to? "))
+        Transfer = (int(input("How much would you like to transfer? ")))
+        if Transfer > balance:
+            return ("Insufficient balance! ")
+        balance -= Transfer
+        return(f"""
+      TRANSACTION SUCCESSFUL!
+      NAME: {Name}
+      BANK: {Bank}
+      AMOUNT: N{Transfer}
+       Current Balance: N{balance}   
+        
+        
+               
+               
+               """)
+        
+    elif choice == 6:
         return("Thank you for banking with us")
+    else:
+        return("Invalid  Option")
 
 ATM = alex_bank(balance, choice)
 print(ATM) 
