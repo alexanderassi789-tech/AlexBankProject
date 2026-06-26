@@ -4,6 +4,8 @@ balance = 20000
 # here we are giving it the balance which it can use to perform
 
 # HERE WE CREATED THE USER CHOICE TO SCAN THROUGH OPTIONS 
+Login = (input("What is your name? "))
+password = (int(input("Insert your PIN: ")))
 choice = (int(input("""
 Welcome to Alex bank PLC, How can we help you today?              
 1. Check balance
@@ -14,7 +16,10 @@ Welcome to Alex bank PLC, How can we help you today?
 6. Exit                     """)))
 
 # HERE WE ARE CREATING THE FUNCTIONS
-def alex_bank(balance , choice):
+def alex_bank(Login, password, balance , choice,):
+    if Login == "alexander" and password == 1:
+        return("Login Successful")
+    
     if choice == 1:
         return (f"Your balance is: N{balance}")
     elif choice == 2:
@@ -68,11 +73,13 @@ def alex_bank(balance , choice):
     else:
         return("Invalid  Option")
 
-ATM = alex_bank(balance, choice)
-print(ATM) 
-                 
-    
+ATM = alex_bank(Login, password, balance, choice)
 
+if password == 1234 and Login == "Alexander":
+    print(ATM)
+else:
+    print("invalid Credentials")
+                    
 
 
 
